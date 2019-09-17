@@ -6,6 +6,12 @@ else
 SOEXT?=so
 BINEXT?=out
 endif
+ifneq (,$(findstring mingw,$(OS)))
+RUNENV=PYTHONHOME=/usr
+else
+RUNENV=
+endif
+
 ifeq ($(PREFIX),)
 PREFIX := /usr/local
 endif
@@ -47,7 +53,7 @@ $(BUILDDIR)/%.o: %.cpp
 clean:
 	@rm -r ./bin
 run:
-	$(BIN)
+	$(RUNENV) $(BIN)
 lsvar:
 	@echo $(BIN)
 	@echo $(OBJS)
