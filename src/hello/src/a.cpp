@@ -1,8 +1,7 @@
-#include <pybind11/embed.h> // everything needed for embedding
-namespace py = pybind11;
-
-int main() {
-	    py::scoped_interpreter guard{}; // start the interpreter and keep it alive
-
-	        py::print("Hello, World!"); // use the Python API
+#include<pybind11/embed.h>
+namespace py=pybind11;
+int main(int argc,char** argv){
+	py::scoped_interpreter guard{};
+	py::print("Hello, World!");
+	return 0;
 }
