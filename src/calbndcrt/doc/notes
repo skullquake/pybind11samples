@@ -1,0 +1,1 @@
+g++ -I/data/data/com.termux/files/usr/include/python3.7m -shared -std=c++11 -fPIC ./example.cpp -L/data/data/com.termux/files/usr/lib -lpython3.7m -o example.cpython-37m.so
