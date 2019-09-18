@@ -7,4 +7,4 @@ a=A()
 a.b='b'
 
 classes registered from cpp to python does not allow this by default
-to enable it, use class_::def_readwrite
+to enable it, use class_::dynamic_attr() in pybind11::class_ constructor
