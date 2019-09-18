@@ -1,5 +1,16 @@
 import sys
 sys.path.insert(1,'./lib')
 import example
-print(example.add(1,2))
-print(example.sub(1,2))
+nums=[1,2,3,4]
+print("--------------------------------------------------------------------------------");
+print("add tst");
+print("--------------------------------------------------------------------------------");
+for x in nums:
+    for y in nums:
+        print(example.add(x,y))
+print("--------------------------------------------------------------------------------");
+print("sub tst");
+print("--------------------------------------------------------------------------------");
+for x in nums:
+    for y in nums:
+        print(example.sub(x,y))
