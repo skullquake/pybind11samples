@@ -1,0 +1,3 @@
+readonly fields can be exposed using class_::def_property_readonly
+related to this is class::def_readwrite_static(),
+and class:def_readonly_static()
