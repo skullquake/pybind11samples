@@ -1,1 +1,4 @@
-fields can be expsed using class_::def_readwrite()
+fields can be exposed using class_::def_readwrite()
+this makes it possible to set fields
+a=example.a
+a.b='c'
