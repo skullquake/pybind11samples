@@ -1,0 +1,3 @@
+lambda functions exists in both cpp and python
+here we look implementing a lambda slot when registering a class
+this has the benifit of not having to taint the class being registered with pybind11 specific code
