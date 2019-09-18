@@ -1,5 +1,5 @@
 #include"lib/obj.h"
-Obj::Obj(const std::string aP="")
+Obj::Obj(const std::string aP)
 	:a(aP)
 {
 	this->c++;
