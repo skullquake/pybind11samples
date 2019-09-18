@@ -1,0 +1,2 @@
+basic oops registration
+static members are bound using class_::dev_static()
