@@ -1,0 +1,5 @@
+default arguments can be registered as follows
+m.def("add",&add,"Function description",py::arg("a")=0,py::arg("b")=1,...);
+namespace::literals shorthand notation is as follows
+using namespace::pybind11::literals
+m.def("add",&add,"Function description","a"_a=0,"b"_a=1,...);

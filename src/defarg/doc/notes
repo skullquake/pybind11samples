@@ -1,0 +1,2 @@
+default arguments can be registered as follows
+m.def("add",&add,"Function description",py::arg("a")=0,py::arg("b")=1,...);
