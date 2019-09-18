@@ -1,0 +1,10 @@
+pure python classes can have attributes dynamically added
+for example
+
+class A:
+	a='a'
+a=A()
+a.b='b'
+
+classes registered from cpp to python does not allow this by default
+to enable it, use class_::def_readwrite
