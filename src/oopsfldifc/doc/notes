@@ -1,0 +1,4 @@
+when fields are private, they may be exposed through field-like interfaces
+which will be called in the background when performing direct manipulation
+python side
+class_::def_property is used to define a getter and setter for a property
