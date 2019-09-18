@@ -95,9 +95,8 @@ $(BUILDDIRLIB)/%.o: %.cpp
 	lsvar
 clean:
 	@rm -r ./bin ./lib
-run:
-#	$(PYTHON3) $(SRCPY)
-	$(RUNENV) $(BIN)
+run: $(BIN)
+	$(RUNENV) $(BIN) ./scr/a.py
 test:
 	echo $(BIN)
 	echo $(LIB)
