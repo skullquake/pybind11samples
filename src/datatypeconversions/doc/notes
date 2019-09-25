@@ -1,0 +1,5 @@
+Sometimes, you may need to perform conversions between the built-in types, for example int(x [,base]). A lot of this will take place automatically, but you can enforce it.
+
+In pybind11, on the C++ side, you might have a function exposed to the scripting language that expects a py::list or std::vector<int>, in the scripting language the conversion will be done for you, more information around this can be found at https://pybind11.readthedocs.io/en/stable/advanced/cast/overview.html#conversion-table
+
+When extracting values from the scripting language you can also cast, available types are listed at https://pybind11.readthedocs.io/en/stable/advanced/pycpp/object.html
