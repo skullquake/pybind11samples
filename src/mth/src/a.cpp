@@ -9,31 +9,32 @@ int main(int argc,char** argv){
 	scope["x"]=-0.5;
 	scope["y"]= 0.5;
 	//script
+	std::cout<<"----------------------------------------"<<std::endl;
 	pybind11::exec(
 		R"(
-import sys
-print(sys.path)
 import math
-#print(abs(x))
-#print(ceil(x))
-#print(cmp(x,y))
-#print(exp(x))
-#fabs(x)
-#floor(x)
-#log(x)
-#log10(x)
-#max(x1, x2,...)
-#min(x1, x2,...)
-#modf(x)
-#pow(x, y)
-#round(x [,n])
-#sqrt(x)
+print(abs(x))
+print(math.ceil(x))
+print(cmp(x,y))
+print(math.exp(x))
+math.fabs(x)
+math.floor(x)
+#math.log(x)
+#math.log10(x)
+print(max(x,y))
+print(min(x,y))
+print(math.modf(x))
+print(pow(y,x))
+print(round(x,1))
+print(math.sqrt(8))
 		)",
 		scope
 	);
 	//api
-	//std::cout<<int(pybind11::eval("x").cast<pybind11::int_>())<<std::endl;
-	//scope["x"]=(pybind11::eval("x").cast<pybind11::int_>())+1;
+	std::cout<<"----------------------------------------"<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("sqrt")(2).cast<double>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("ceil")(2.5).cast<double>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("floor")(2.5).cast<double>()<<std::endl;
 	return 0;
 }
 
