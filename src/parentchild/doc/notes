@@ -1,0 +1,9 @@
+Enum usage sample
+
+Submodules may be registered using py::module, as enums are usually found in structs. The name of the submodule is set to the struct name. In this way you can refer to enums in the struct
+
+```
+example.enum.Cat
+```
+
+py::num_<> is used to export enum values, with value() and export_values() functions

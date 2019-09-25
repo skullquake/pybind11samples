@@ -52,8 +52,8 @@ $(BUILDDIR)/%.o: %.cpp
 	lsvar
 clean:
 	@rm -r ./bin
-run: $(BIN)
-	$(RUNENV) $(BIN)
+run:
+	$(RUNENV) $(BIN) ./scr/a.py
 lsvar:
 	@echo $(BIN)
 	@echo $(OBJS)

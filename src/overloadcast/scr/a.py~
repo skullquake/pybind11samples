@@ -1,0 +1,5 @@
+import sys
+sys.path.insert(1,'./lib')
+import example
+o0=example.Obj('')
+print(example.Obj.getC())

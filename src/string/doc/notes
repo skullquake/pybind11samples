@@ -1,0 +1,5 @@
+description:
+	using pybind11 to use python in c
+references:
+	https://pybind11.readthedocs.io/en/stable/advanced/embedding.html
+Tue Sep 17 09:41:37 SAST 2019
