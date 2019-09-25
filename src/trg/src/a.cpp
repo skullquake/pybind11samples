@@ -12,48 +12,32 @@ int main(int argc,char** argv){
 	std::cout<<"----------------------------------------"<<std::endl;
 	pybind11::exec(
 		R"(
-import random
-random.seed(8)
-print(random.random())
-print(random.randrange(0,10,2))
-print(random.choice([0,1,2,3]))
-l=[0,1,2,3]
-random.shuffle(l)
-print(l)
-print(random.uniform(0,1))
+import math
+print(math.acos(x))
+print(math.asin(x))
+print(math.atan(x))
+print(math.atan2(y,x))
+print(math.cos(x))
+print(math.hypot(x,y))
+print(math.sin(x))
+print(math.tan(x))
+print(math.degrees(x))
+print(math.radians(x))
 		)",
 		scope
 	);
 	//api
 	std::cout<<"----------------------------------------"<<std::endl;
-	pybind11::module::import("random").attr("seed")(8);
-	std::cout<<pybind11::module::import("random").attr("random")().cast<double>()<<std::endl;
-	pybind11::list l;
-	l.append(0);
-	l.append(1);
-	l.append(2);
-	l.append(3);
-	l.append(4);
-	std::cout<<pybind11::module::import("random").attr("choice")(l).cast<int>()<<std::endl;
-	std::cout<<pybind11::module::import("random").attr("randrange")(0,10,2).cast<int>()<<std::endl;
-	pybind11::module::import("random").attr("shuffle")(l);
-	for(auto& a:l){
-		std::cout<<(a.cast<int>())<<" ";
-	}
-	std::cout<<std::endl;
-	std::cout<<pybind11::module::import("random").attr("uniform")(0,1).cast<float>()<<std::endl;
-	//std::cout<<float(scope.attr["pi"])<<std::endl;//???
+	std::cout<<pybind11::module::import("math").attr("acos")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("asin")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("atan")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("atan2")(1,2).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("cos")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("hypot")(1,2).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("sin")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("tan")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("degrees")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::module::import("math").attr("radians")(1).cast<float>()<<std::endl;
 	return 0;
 }
-/*
-acos(x)
-asin(x)
-atan(x)
-atan2(y, x)
-cos(x)
-hypot(x, y)
-sin(x)
-tan(x)
-degrees(x)
-radians(x)
-   */
+
