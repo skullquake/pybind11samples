@@ -1,0 +1,17 @@
+With the interpreter embedded, we can store values in a scope. Create a scope as follows
+
+pybind11::object scope=pybind11::module::import("__main__").attr("__dict__");
+
+Set a value
+
+scope["x"]=123;
+
+Use this object in relevant Python executions
+
+pybind11::exec(
+		R"(
+			print(x)
+		)",
+		scope
+	);
+
