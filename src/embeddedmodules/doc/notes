@@ -1,0 +1,3 @@
+when working with the interpreter you can embed functions in your source instead of building shared objects seperately and importing them
+
+

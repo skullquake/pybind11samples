@@ -42,6 +42,7 @@ print(random.uniform(0,1))
 	}
 	std::cout<<std::endl;
 	std::cout<<pybind11::module::import("random").attr("uniform")(0,1).cast<float>()<<std::endl;
+	//std::cout<<float(scope.attr["pi"])<<std::endl;//???
 	return 0;
 }
 /*
