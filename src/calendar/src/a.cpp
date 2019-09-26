@@ -88,6 +88,8 @@ print(cal)
 			std::cout<<std::endl;
 		}
 	}
+	pybind11::module::import("calendar").attr("TextCalendar")().attr("prmonth")(1990,1);
+	std::cout<<pybind11::module::import("calendar").attr("TextCalendar")().attr("formatyear")(1990).cast<std::string>()<<std::endl;;
 
 	return 0;
 }
