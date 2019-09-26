@@ -1,23 +1,69 @@
+#include<iostream>
 #include<pybind11/embed.h>
 int main(int argc,char** argv){
 	pybind11::scoped_interpreter guard{};
+	pybind11::object scope=pybind11::module::import("__main__").attr("__dict__");
 	//script
+	std::cout<<"----------------------------------------"<<std::endl;
+	scope["a"]=pybind11::str("test");
 	pybind11::exec(
-			R"(
-				a="qwer";
-				print(a);
-				print(a[0]);
-				print(a[0:2]);
-				print(a[:2]);
-				print(a[2:]);
-				print(a*2);
-				print(2*a);
-				print(a+a);
-			  )"
+		R"(
+print(a);
+print(a[0]);
+print(a[0:2]);
+print(a[:2]);
+print(a[2:]);
+print(a*2);
+print(2*a);
+print(a+a);
+print "lorem %s ipsum %s" % ('foo', 123)
+		  )"
 	);
-	//api
-	pybind11::str s("foo");
-	pybind11::print(s);
-	pybind11::print(s,s);
+	std::cout<<"----------------------------------------"<<std::endl;
+	//std::cout<<pybind11::module::import("math").attr("acos")(1).cast<float>()<<std::endl;
+	std::cout<<pybind11::eval("a").cast<std::string>()<<std::endl;
+	std::cout<<pybind11::eval("a").attr("capitalize")().cast<std::string>()<<std::endl;
+	std::cout<<pybind11::eval("a").attr("center")(40,"_").cast<std::string>()<<std::endl;
+	std::cout<<pybind11::eval("a").attr("count")("es").cast<int>()<<std::endl;
+	std::cout<<pybind11::eval("a").attr("endswith")("te").cast<bool>()<<std::endl;
+	scope["foo"]=pybind11::str("foo\tbar\tbaz\tqux");
+	std::cout<<pybind11::eval("foo").attr("expandtabs")(8).cast<std::string>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("find")("baz").cast<int>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("index")("baz").cast<int>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("isalpha")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("isalnum")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("isdigit")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("islower")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("isnumeric")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("isspace")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("istitle")().cast<bool>()<<std::endl;
+	std::cout<<pybind11::eval("foo").attr("isupper")().cast<bool>()<<std::endl;
+	auto bar=pybind11::list();
+	bar.append(pybind11::str("foo"));
+	bar.append(pybind11::str("bar"));
+	bar.append(pybind11::str("baz"));
+	bar.append(pybind11::str("qux"));
+	bar.append(pybind11::str("klutz"));
+	scope["comma"]=pybind11::str(",");
+	std::cout<<pybind11::eval("comma").attr("join")(bar).cast<std::string>()<<std::endl;
+	//len
+	//ljust
+	//lstrip
+	//maketrans
+	//max
+	//min
+	//rfind
+	//rindex
+	//rjust
+	//rstrip
+	//split
+	//startswith
+	//split
+	//swapcase
+	//title
+	//translate
+	std::cout<<pybind11::eval("foo").attr("upper")().cast<std::string>()<<std::endl;
+	//zfill
+	//isdecimal
 	return 0;
 }
