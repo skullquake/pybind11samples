@@ -110,7 +110,7 @@ class Child(Parent): # define child class
 		print 'Calling child method'
 	def __del__(self):
 		print("Child destructor")
-		super(type(self),self).__del__() #???
+		# super(type(self),self).__del__() #???
 c=Child()            # instance of child
 c.childMethod()      # child calls its method
 c.parentMethod()     # calls parent's method
