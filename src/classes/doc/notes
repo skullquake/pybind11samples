@@ -1,0 +1,36 @@
+The pybind11 library is usually used to create c++ classes and compile them into shared objects importable by the python interpreter, either the embedded python interpreter or the regular python interpreter. You can, when using the embedded interpreter, import such seperately compiled modules and use them, but it is also possible to define both functions and classes in your c++ code and use them there and then in the embedded interpreter by using the PYBIND11_EMBDDED_MODULE macro.
+
+When embdding functions, you can embed regular functions or lambda functions, which is pretty handy.
+
+PYBIND11_EMBEDDED_MODULE(fast_calc, m) {
+	m.def("add", [](int i, int j) {
+		return i + j;
+	});
+}
+
+Embedding classes is much the same, as illustrated in the following example
+
+class Obj{
+	public:
+		Obj(std::string aP="")
+			:m_a(aP)
+		{
+		}
+		~Obj(){
+		}
+		void setA(std::string aP){
+			this->m_a=aP;
+		}
+		std::string getA(){
+			return this->m_a;
+		}
+	private:
+		std::string m_a;
+};
+PYBIND11_MODULE(imod,m){
+	pybind11::class_<Obj>(m,"Obj")
+		.def(pybind11::init<const std::string &>())
+		.def("setA",&Obj::setA)
+		.def("getA",&Obj::getA)
+	;
+}
