@@ -15,18 +15,18 @@ int main(int argc,char** argv){
 		R"(
 import re;
 import sys;
-a=re.compile("^[\-]?[1-9][0-9]*\.?[0-9]+$")
-print(' ')
+a=re.compile("^[\-]?[1-9][0-9]*\.?[0-9]+$");
+print(' ');
 while True:
-	sys.stdout.flush()#windowz
+	sys.stdout.flush();#windowz
 	b=raw_input("Enter number [q to quit]: ");
-	sys.stdout.flush()#windowsz
+	sys.stdout.flush();#windowsz
 	if b.strip()=='q':
 		break;
 	if re.match(a,b):
-		print "is a number"
+		print "is a number";
 	else:
-		print('is not number')
+		print('is not number');
 print('done');
 		)",
 		s
