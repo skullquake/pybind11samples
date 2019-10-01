@@ -33,12 +33,12 @@ print('done');
 	);
 	//api
 	std::cout<<"----------------------------------------"<<std::endl;
-	pybind11::object a=pybind11::module("re").attr("compile")(R"(^[\-]?[1-9][0-9]*\.?[0-9]+$")");
+	pybind11::object a=pybind11::module("re").attr("compile")(R"(^[\-]?[1-9][0-9]*\.?[0-9]+$)");
 	while(true){
 		pybind11::object b=eval(R"(raw_input("Enter number [q to quit]: "))",s);
 		if(b.attr("strip")().cast<std::string>().compare("q")==0)
 			break;
-		if(pybind11::module("re").attr("match")(a,b).cast<bool>())//???
+		if(!pybind11::module("re").attr("match")(a,b).is_none())//notice test for empty
 			std::cout<<"is a number"<<std::endl;
 		else
 			std::cout<<"is not a number"<<std::endl;
