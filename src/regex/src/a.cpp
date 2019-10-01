@@ -10,6 +10,7 @@ int main(int argc,char** argv){
 	pybind11::module m=pybind11::module::import("__main__");
 	pybind11::object s=m.attr("__dict__");
 	//script
+	std::cout<<"----------------------------------------"<<std::endl;
 	pybind11::exec(
 		R"(
 import re;
@@ -30,23 +31,17 @@ print('done');
 		)",
 		s
 	);
-	//cpp
-	std::string input;
-	std::regex integer("(\\+|-)?[[:digit:]]+");
-	//As long as the input is correct ask for another number
+	//api
+	std::cout<<"----------------------------------------"<<std::endl;
+	pybind11::object a=pybind11::module("re").attr("compile")(R"(^[\-]?[1-9][0-9]*\.?[0-9]+$")");
 	while(true){
-	     std::cout<<"Give me an integer!"<<std::endl;
-	     std::cin>>input;
-             if(!std::cin) break;
-             //Exit when the user inputs q
-             if(input=="q")
-                     break;
-             if(std::regex_match(input,integer))
-                     std::cout<<"integer"<<std::endl;
-             else
-             {
-		     std::cout<<"Invalid input"<<std::endl;
-             }
+		pybind11::object b=eval(R"(raw_input("Enter number [q to quit]: "))",s);
+		if(b.attr("strip")().cast<std::string>().compare("q")==0)
+			break;
+		if(pybind11::module("re").attr("match")(a,b).cast<bool>())//???
+			std::cout<<"is a number"<<std::endl;
+		else
+			std::cout<<"is not a number"<<std::endl;
 	}
 	return 0;
 }
